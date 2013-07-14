@@ -3,3 +3,7 @@ rvm:
   - 2.2.0
 sudo: false
 script: bundle exec rake deploy
+
+env:
+  global:
+    secure: ! 'EYbHbyIzF+G1xFZZNuus5fLMwl+pRQGE7kinTEu7cEjzbcr428xqRcQ3J6EA 8z/DYxKWfkPY+9/wYI+b8FelVK9vByzcxScUWAmqPrhaLJkwlmkEVC3U//Rb weyYYZhDriNcnYHeAcVOSeaI3O9zR8+LGaD/Ju1qpQkHXdP2Y08='
