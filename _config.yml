@@ -5,6 +5,10 @@ pygments: true
 
 currentVersion: "0.3.0-beta-3"
 
+# Add support for AsciiDoc posts using Asciidoctor
+gems:
+  - jekyll-asciidoc
+
 asciidoctor:
   attributes:
     - idseparator=_
