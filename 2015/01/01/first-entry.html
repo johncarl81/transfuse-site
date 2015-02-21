@@ -7,7 +7,7 @@
     <!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>Generated Parcelables</title>
+	<title>Jekyll-Asciidoc Quickstart</title>
 
 	<!-- Mobile Specific Metas
   ================================================== -->
@@ -83,81 +83,21 @@
 	<div class="thirteen columns content">
 
 		<div class="sect2">
-<h3 id="transfuse_technical_blog">Transfuse Technical Blog</h3>
-<div class="sect3">
-<h4 id="generated_parcelables">Generated Parcelables</h4>
+<h3 id="example_entry">Example entry</h3>
 <div class="paragraph">
-<p><em>January 29, 2013</em></p>
+<p>Lorem ipsum dolor sit amet, et elitr docendi officiis vix. An has impedit concludaturque, an vim dicam feugiat nominavi. Veniam oblique menandri sea ea, agam novum appareat in his. Constituto posidonium te his. Pri quot iudico ex, noster apeirian concludaturque mel cu.</p>
 </div>
 <div class="paragraph">
-<p>One of my favorite rough spots in Android to rag on is the Parcelable.  Parcelable classes are used by Android as a high-performance serialization option, especially useful when passing data between Activities/Contexts.  What is so rough about Parcelable classes are the API requirements.  Yes, Parcelable is an interface that defines the contract, but Android expects more!  Android requires that if your class is a Parcelable (and you&#8217;re using it as such) then you have to define a:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> Parcelable.Creator&lt;MyParcelable&gt; CREATOR</code></pre>
-</div>
+<p>Ocurreret salutatus scribentur ne est, quo nostrud scriptorem ex, vis ea cetero labores delicatissimi. Quis viris nullam ea pri, vim solum lobortis eu. Augue intellegat interpretaris eum ei. Ludus integre id qui, cu ludus partiendo interpretaris cum. At cibo mentitum his, ei vero accusamus qui. At ius iudico postea platonem, no vim efficiendi efficiantur, ea mea reprimique percipitur liberavisse.</p>
 </div>
 <div class="paragraph">
-<p>within your class.  The consequences of not doing so is an Exception at run time.  Yes, it must be a Parcelable.Creator, and yes it must be named C-R-E-A-T-O-R.  In addition to this implementing Parcelable is error prone.  You must implement mirrored createFromParcel() and writeToParcel() methods.  Because of this, bugs will often crop up around ordering or missing a field in the implemented Parcelable.</p>
+<p>Altera eruditi nam et, in vim veniam option probatus. Ei delicata adolescens quo. Iriure salutatus constituam an vix, ex mei aliquip persius oporteat. Id decore molestiae eam, at essent gubergren percipitur ius. Mea et probo laboramus, tibique ocurreret ea ius.</p>
 </div>
 <div class="paragraph">
-<p>Transfuse gives you a way out of this mess.  Annotating a POJO with @Parcel will trigger, at compile time, the generation of a Parcelable class that serializes using the coordinated Java Bean getters and setters.  The result is your POJO is clear of any Parcelable cruft, while you get the performance of using the Parcelable.  Here&#8217;s an example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Parcel</span>
-<span class="directive">public</span> <span class="type">void</span> CleanParcel{
-    <span class="directive">private</span> <span class="predefined-type">String</span> value;
-    <span class="directive">public</span> <span class="predefined-type">String</span> getValue(){
-        <span class="keyword">return</span> value;
-    }
-    <span class="directive">public</span> <span class="type">void</span> setValue(<span class="predefined-type">String</span> value){
-        <span class="local-variable">this</span>.value = value;
-    }
-}</code></pre>
-</div>
+<p>Tale vide scripserit pro id. Habeo latine percipit et mea, eos at nusquam principes conclusionemque. Ei possim eirmod euripidis his. Ei his veri choro, omnesque vituperata theophrastus nec no.</p>
 </div>
 <div class="paragraph">
-<p>Clean, isn&#8217;t it?</p>
-</div>
-<div class="paragraph">
-<p>To wrap your <code>@Parcel</code> manually, there is a <code>Parcels</code> utility class in the API:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">Parcelable exampleWrapped = Parcel.wrap(example);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Of course, since it is generated code, you may use it directly as well:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">Parcelable exampleWrapped = <span class="keyword">new</span> ParcelExample_Parcelable(example);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Also, Transfuse will automatically use the generated Parcelable when your <code>@Parcel</code> class is referenced in <code>@Extras</code>. This affects both the serialization through the generated Intent Factories and the serialization in the receiving Activity/Context.  The end result is you don&#8217;t even have to bother with wrapping/unwrapping or, of course, implementing the Parcelable.</p>
-</div>
-<div class="paragraph">
-<p>There are a couple other details that you can read about in the <a href="http://androidtransfuse.org/documentation.html#parcel">@Parcel documentation</a>[1].</p>
-</div>
-<div class="paragraph">
-<p>Here are a few other community solutions/proposals to address the issues around implementing Parcelable classes:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://dallasgutauckis.com/2012/01/20/parcelabler-for-implementing-androids-parcelable-interface/" class="bare">http://dallasgutauckis.com/2012/01/20/parcelabler-for-implementing-androids-parcelable-interface/</a></p>
-</li>
-<li>
-<p><a href="https://github.com/excilys/androidannotations/issues/301" class="bare">https://github.com/excilys/androidannotations/issues/301</a></p>
-</li>
-<li>
-<p><a href="https://github.com/foxykeep/parcelablecodegenerator" class="bare">https://github.com/foxykeep/parcelablecodegenerator</a></p>
-</li>
-</ul>
-</div>
+<p>In quo debet iriure adolescens, nec molestie accusata ad, sea te malis atomorum petentium. Convenire corrumpit id vis, ad accumsan interesset usu. Esse dictas sea ne. Cum constituto deterruisset no, vim laudem doctus at. Nam dicat zril ea, mei omnesque explicari pertinacia ea. Nihil dicunt aliquam nam ne.</p>
 </div>
 </div>
 
