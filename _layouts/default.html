@@ -44,13 +44,6 @@
 			<ul class="nav">
 				<li><a href="{{page.root}}index.html">About</a></li>
 				<li><a href="{{page.root}}getting_started.html">Getting Started</a></li>
-				<li><span id="poststoggle" class="arrow arrowright"></span><a href="{{page.root}}posts.html">Blog</a>
-					<ul id="posts" class="posts nav">
-					{% for post in site.posts limit: 5 %}
-						<li><a href="{{ post.url }}">{{ post.shortTitle }}</a></li>
-					{% endfor %}
-					</ul>
-				</li>
 				<li><span id="documentationtoggle" class="arrow arrowright"></span><a href="{{page.root}}documentation.html">Documentation</a>
 					<ul id="documentation" class="nav">
 						<li><a href="{{page.root}}documentation.html#introduction">Introduction</a></li>
