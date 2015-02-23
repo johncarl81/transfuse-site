@@ -8,17 +8,17 @@ nav ul li a, nav ul li a:visited, nav ul li a:active {
     text-decoration: none;
 }
 
-.title, .title:hover {
-    text-decoration: none;
-    color: black;
-}
-
 a, a:visited {
     color: #008000;
 }
 
 a:hover {
-    color: #00a000;
+    color: #00b000;
+}
+
+.title, .title:hover, .title:visited {
+    text-decoration: none;
+    color: black;
 }
 
 img {
