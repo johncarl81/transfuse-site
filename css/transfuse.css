@@ -8,8 +8,17 @@ nav ul li a, nav ul li a:visited, nav ul li a:active {
     text-decoration: none;
 }
 
-.title {
+a, a:visited {
+    color: #008000;
+}
+
+a:hover {
+    color: #00b000;
+}
+
+.title, .title:hover, .title:visited {
     text-decoration: none;
+    color: black;
 }
 
 img {
@@ -37,8 +46,8 @@ div.note {
     height: 12px;
     width: 12px;
     position: absolute;
-    left: -6px;
-    margin-top: 3px;
+    left: 6px;
+    margin-top: 6px;
     cursor: pointer;
 }
 
