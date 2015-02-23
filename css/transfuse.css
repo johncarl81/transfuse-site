@@ -164,4 +164,5 @@ table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoo
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
+    color: black;
 }
