@@ -37,13 +37,6 @@ div.note {
     background: url('../images/note.png') no-repeat scroll 10px 10px #FFFFE0;
 }
 
-div.note table, table tr td, table tr th{
-    margin: 0;
-    padding: 0;
-    background: none;
-    border: none;
-}
-
 #socialwidget {
     float: right;
 }
@@ -53,6 +46,7 @@ div.note table, table tr td, table tr th{
     height: 12px;
     width: 12px;
     position: absolute;
+    left: 6px;
     margin-top: 6px;
     cursor: pointer;
 }
