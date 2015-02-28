@@ -37,6 +37,14 @@ div.note {
     background: url('../images/note.png') no-repeat scroll 10px 10px #FFFFE0;
 }
 
+div.note table, table tr th, table tr td {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+
+}
+
 #socialwidget {
     float: right;
 }
@@ -165,4 +173,48 @@ table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoo
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     color: black;
+}
+
+.listingblock pre.highlightjs {
+    padding: 0
+}
+
+.listingblock pre.highlightjs > code {
+    padding: 1em;
+    -webkit-border-radius: 4px;
+    border-radius: 4px
+}
+
+.listingblock pre.prettyprint {
+    border-width: 0
+}
+
+.listingblock > .content {
+    position: relative
+}
+
+.listingblock code[data-lang]:before {
+    display: none;
+    content: attr(data-lang);
+    position: absolute;
+    font-size: .75em;
+    top: .425rem;
+    right: .5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #999
+}
+
+.listingblock:hover code[data-lang]:before {
+    display: block
+}
+
+.listingblock.terminal pre .command:before {
+    content: attr(data-prompt);
+    padding-right: .5em;
+    color: #999
+}
+
+.listingblock.terminal pre .command:not([data-prompt]):before {
+    content: "$"
 }
