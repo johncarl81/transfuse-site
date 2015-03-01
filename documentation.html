@@ -69,7 +69,9 @@
 <h4 id="introduction">Introduction</h4>
 <div class="paragraph">
 <p>The Android API has a common theme throughout its components; each component must be implemented as an extension of a base component.
-Although this approach works, it has subtle side effects. If the component implements many separate features, the component class quickly becomes a mismatch of behavior, resulting in hard-to-read and hard-to-test classes. Also, any third party library based on the component lifecycle or functionality provided by a Context must extend the given component class.
+Although this approach works, it has subtle side effects.
+If the component implements many separate features, the component class quickly becomes a mismatch of behavior, resulting in hard-to-read and hard-to-test classes.
+Also, any third party library based on the component lifecycle or functionality provided by a Context must extend the given component class.
 Because of Java&#8217;s single extension policy, this action makes these third party libraries that leverage Context components incompatible with each other.</p>
 </div>
 <div class="paragraph">
@@ -784,7 +786,8 @@ Public constructor injection should be preferred.
 <div class="sect4">
 <h5 id="provider">Provider</h5>
 <div class="paragraph">
-<p>Providers may be used to manually resolve the dependencies of a class. The Provider will be used to resolve both the injection of the Provider and the injection of the type the Provider returns:</p>
+<p>Providers may be used to manually resolve the dependencies of a class.
+The Provider will be used to resolve both the injection of the Provider and the injection of the type the Provider returns:</p>
 </div>
 <div class="paragraph">
 <p>Provider:</p>
