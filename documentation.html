@@ -52,7 +52,6 @@
                         <li><a href="documentation.html#method_interceptors">Method Interceptors</a></li>
                         <li><a href="documentation.html#configuration">Configuration</a></li>
                         <li><a href="documentation.html#events">Events</a></li>
-                        <li><a href="documentation.html#parcel">@Parcel</a></li>
                         <li><a href="documentation.html#factory">@Factory</a></li>
                         <li><a href="documentation.html#legacy_support">Legacy Support</a></li>
                         <li><a href="documentation.html#reference">Reference</a></li>
@@ -456,6 +455,21 @@ Using the @Extra qualifier along with the IntentFactory helps enforce the contra
 <div class="paragraph">
 <p>Firstly, requires a string value named "one" to be provided in the Bundle while starting the Example Activity, and secondly has the option to inject an extra String value named "two."  If the Extra "two" is not provided in the Intent starting the Example Activity, "two" will be null.</p>
 </div>
+</div>
+<div class="sect5">
+<h6 id="parcel">@Parcel</h6>
+<div class="paragraph">
+<p>Transfuse introduced a new way of defining Parcelables, by annotating POJOs with <code>@Parcel</code>.
+This annotation instructed Transfuse to generate the boilerplate assocaited with a <code>Parcelable</code> implementation.
+Since this introduction, this feature was split from Transfuse into its own library named Parceler.
+For more information on Parceler and detailed documentation, see the website [parceler.org](<a href="http://parceler.org" class="bare">http://parceler.org</a>).</p>
+</div>
+<div class="paragraph">
+<p>Parcels are useful when passing data between Android components.
+When using the <code>IntentFactory</code> and <code>@Extra`s, Transfuse will automatically detect if a class is annotated with @Parcel and wrap it with the appropriate Parcelable implementation.
+If the target POJO is not annotated with `@Parcel</code> (Parceler allows a variety of configurations) then wrapping/unwrapping via the <code>Parcels.wrap()</code>/<code>Parcels.unwrap()</code> methods may be forced using the <code>forceParceler=true</code> parameter.</p>
+</div>
+<hr>
 </div>
 <div class="sect5">
 <h6 id="resource">@Resource</h6>
@@ -1205,47 +1219,6 @@ Simply call this method with the given event and all the available annotated met
 <p>Keep in mind that events may contain any relevant data and behavior.
 It is completely definable by the user.
 Also, the Observing methods are not called in any particular order, so make sure that the operations are not dependent on each other.</p>
-</div>
-<hr>
-</div>
-<div class="sect3">
-<h4 id="parcel">@Parcel</h4>
-<div class="paragraph">
-<p>Transfuse offers a new way of defining Parcelable classes.
-The typical implementation of a Parcelable class in Android is riddled with boilerplate.
-Not only do users have to define the serialization manually, but also must define a public static final CREATOR class that implements the Parcelable.Creator interface.
-Transfuse takes care of all of this.
-Simply annotate the class with the @Parcel annotation.
-Transfuse will detect all java bean format getter/setter pairs, map it to the designated Bundle serialization method, and produce a Parcelable class:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Parcel</span>
-<span class="directive">public</span> <span class="type">void</span> CleanParcel{
-    <span class="directive">private</span> <span class="predefined-type">String</span> name;
-    <span class="directive">private</span> <span class="type">int</span> age;
-    <span class="directive">public</span> <span class="predefined-type">String</span> getName(){
-        <span class="keyword">return</span> name;
-    }
-    <span class="directive">public</span> <span class="type">void</span> setName(<span class="predefined-type">String</span> name){
-        <span class="local-variable">this</span>.name = name;
-    }
-    <span class="annotation">@Transient</span> <span class="comment">//don't serialize in parcelable</span>
-    <span class="directive">public</span> <span class="type">int</span> getAge(){
-        <span class="keyword">return</span> age;
-    }
-    <span class="directive">public</span> <span class="type">void</span> setAge(<span class="type">int</span> age){
-        <span class="local-variable">this</span>.age = age;
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If there is a parameter that the user does not want serialized, annotate the getter or setter with @Transient.</p>
-</div>
-<div class="paragraph">
-<p>Parcels are useful when passing data between Android components.
-Therefore, when using the IntentFactory, Transfuse will automatically detect if a class is annotated with @Parcel and wrap it with the appropriate Parcelable implementation.</p>
 </div>
 <hr>
 </div>
