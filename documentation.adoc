@@ -339,6 +339,18 @@ public class Example{
 
 Firstly, requires a string value named "one" to be provided in the Bundle while starting the Example Activity, and secondly has the option to inject an extra String value named "two."  If the Extra "two" is not provided in the Intent starting the Example Activity, "two" will be null.
 
+====== @Parcel
+
+Transfuse introduced a new way of defining Parcelables, by annotating POJOs with `@Parcel`.
+This annotation instructed Transfuse to generate the boilerplate assocaited with a `Parcelable` implementation.
+Since this introduction, this feature was split from Transfuse into its own library named Parceler.
+For more information on Parceler and detailed documentation, see the website http://parceler.org.
+
+Parcels are useful when passing data between Android components.
+When using the `IntentFactory` and `@Extra`, Transfuse will automatically detect if a class is annotated with @Parcel and wrap it with the appropriate Parcelable implementation.
+If the target POJO is not annotated with `@Parcel` (Parceler allows a variety of configurations) then wrapping/unwrapping via the `Parcels.wrap()`/`Parcels.unwrap()` methods may be forced using the `forceParceler=true` parameter.
+
+
 ====== @Resource
 
 The Resource qualifier specifies the given injection draws from the Application's Resources found on the Context.getResources() method call.
@@ -978,44 +990,7 @@ It is completely definable by the user.
 Also, the Observing methods are not called in any particular order, so make sure that the operations are not dependent on each other.
 
 '''
-==== @Parcel
 
-Transfuse offers a new way of defining Parcelable classes.
-The typical implementation of a Parcelable class in Android is riddled with boilerplate.
-Not only do users have to define the serialization manually, but also must define a public static final CREATOR class that implements the Parcelable.Creator interface.
-Transfuse takes care of all of this.
-Simply annotate the class with the @Parcel annotation.
-Transfuse will detect all java bean format getter/setter pairs, map it to the designated Bundle serialization method, and produce a Parcelable class:
-
-[source,java]
---
-@Parcel
-public void CleanParcel{
-    private String name;
-    private int age;
-    public String getName(){
-        return name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    @Transient //don't serialize in parcelable
-    public int getAge(){
-        return age;
-    }
-    public void setAge(int age){
-        this.age = age;
-    }
-}
---
-
-
-If there is a parameter that the user does not want serialized, annotate the getter or setter with @Transient.
-
-Parcels are useful when passing data between Android components.
-Therefore, when using the IntentFactory, Transfuse will automatically detect if a class is annotated with @Parcel and wrap it with the appropriate Parcelable implementation.
-
-'''
 ==== @Factory
 
 There may be a need to build a dependency graph of a given type outside of a Transfuse dependency graph.
