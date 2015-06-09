@@ -673,12 +673,6 @@ This makes it easy to define singletons in the application, eliminating the boil
 public class SingletonExample{ }
 --
 
-====== @ContextScope
-
-With the need to instantiate one, and only one, instance of a class per Context, Transfuse allows the declaration of a Context singleton via the +
-@ContextScope+ annotation.
-Any object annotated with this will be scoped to the Context in which it was originally instantiated.
-
 ===== Custom Scopes
 
 Defining a custom scope is easy and especially useful when defining the lifecycle of objects in Transfuse.
