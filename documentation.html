@@ -138,6 +138,18 @@ Each of these components are defined by annotating a class as follows:</p>
 <p>These annotations tell Transfuse to use the class as an Android component.
 This turns on a number of features, such as DI and event mapping.</p>
 </div>
+<div class="paragraph">
+<p>Behind the scenes, Transfuse implements a corresponding Android Context class.
+The type of Context class Transfuse implements may be specified by providing the type parameter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Activity</span>(type = FragmentActivity.class)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">FragmentMain</span> {}
+<span class="annotation">@Fragment</span>(type = ListFragment.class)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ListFragmentExample</span> {}</code></pre>
+</div>
+</div>
 <hr>
 </div>
 <div class="sect3">
