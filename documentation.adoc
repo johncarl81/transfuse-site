@@ -69,6 +69,17 @@ public class ExampleBroadcastReceiver {}
 These annotations tell Transfuse to use the class as an Android component.
 This turns on a number of features, such as DI and event mapping.
 
+Behind the scenes, Transfuse implements a corresponding Android Context class.
+The type of Context class Transfuse implements may be specified by providing the type parameter:
+
+[source,java]
+--
+@Activity(type = FragmentActivity.class)
+public class FragmentMain {}
+@Fragment(type = ListFragment.class)
+public class ListFragmentExample {}
+--
+
 '''
 
 ==== @Activity
