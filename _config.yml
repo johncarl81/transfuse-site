@@ -3,7 +3,7 @@
 title: "Transfuse"
 pygments: true
 
-currentVersion: "0.3.0-beta-5"
+currentVersion: "0.3.0-beta-6"
 
 # Add support for AsciiDoc posts using Asciidoctor
 gems:
