@@ -6,5 +6,5 @@ require 'rake-jekyll'
 Rake::Jekyll::GitDeployTask.new(:deploy) do |t|
 
     t.override_committer = true
-    t.committer = 'Jekyll<johncarl81@gmail.com>'
+    t.committer = 'Jekyll<jekyll@jekyll.com>'
 end
