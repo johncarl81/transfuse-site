@@ -77,7 +77,7 @@ You may download Transfuse as a Maven dependency:
 or Gradle:
 [source,groovy]
 --
-apt 'org.androidtransfuse:transfuse:{{site.currentVersion}}'
+annotationProcessor 'org.androidtransfuse:transfuse:{{site.currentVersion}}'
 compile 'org.androidtransfuse:transfuse-api:{{site.currentVersion}}'
 --
 
